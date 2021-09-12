@@ -1,0 +1,54 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "Hw.Dto/1.0.0": {
+        "dependencies": {
+          "Hw.Model": "1.0.0"
+        },
+        "runtime": {
+          "Hw.Dto.dll": {}
+        }
+      },
+      "FreeSql/2.5.200": {
+        "runtime": {
+          "lib/netstandard2.0/FreeSql.dll": {
+            "assemblyVersion": "2.5.200.0",
+            "fileVersion": "2.5.200.0"
+          }
+        }
+      },
+      "Hw.Model/1.0.0": {
+        "dependencies": {
+          "FreeSql": "2.5.200"
+        },
+        "runtime": {
+          "Hw.Model.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Hw.Dto/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FreeSql/2.5.200": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lBWses/QVJQkothKmmGskq8FKkkEL99acak4jmDHgheC+XgnP0I8CC69yvfvKR7XFeYc01BXgSTzz8KhYx7OPQ==",
+      "path": "freesql/2.5.200",
+      "hashPath": "freesql.2.5.200.nupkg.sha512"
+    },
+    "Hw.Model/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

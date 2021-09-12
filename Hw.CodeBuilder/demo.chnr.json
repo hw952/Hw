@@ -1,0 +1,2249 @@
+{
+  "name": "d",
+  "describe": "d",
+  "avatar": "",
+  "version": "3.2.0",
+  "createdTime": "2021-8-31 15:44:18",
+  "updatedTime": "2021-9-10 15:51:29",
+  "dbConns": [],
+  "profile": {
+    "default": {
+      "db": "MYSQL",
+      "dbConn": "",
+      "entityInitFields": [
+        {
+          "defKey": "Id",
+          "defName": "pk",
+          "comment": "",
+          "type": "INT",
+          "len": "",
+          "scale": "",
+          "primaryKey": true,
+          "notNull": true,
+          "autoIncrement": true,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "domain": "Int",
+          "dataBaseField": true,
+          "dtoList": true,
+          "dtoUpdate": true
+        },
+        {
+          "defKey": "Revision",
+          "defName": "乐观锁",
+          "comment": "",
+          "domain": "Int",
+          "type": "INT",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "CreatedBy",
+          "defName": "创建人",
+          "comment": "",
+          "domain": "DefaultString",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "CreatedTime",
+          "defName": "创建时间",
+          "comment": "",
+          "domain": "DateTime",
+          "type": "DATETIME",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "UpdatedBy",
+          "defName": "更新人",
+          "comment": "",
+          "domain": "DefaultString",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "UpdatedTime",
+          "defName": "更新时间",
+          "comment": "",
+          "domain": "DateTime",
+          "type": "DATETIME",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "Name",
+          "defName": "名称",
+          "comment": "",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": true,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "DefaultString",
+          "dataBaseField": true,
+          "dtoAdd": true,
+          "dtoUpdate": true,
+          "dtoList": true,
+          "dtoSearch": true,
+          "parentId": false,
+          "uiHint": "Input"
+        },
+        {
+          "defKey": "Enable",
+          "defName": "是否启用",
+          "comment": "",
+          "type": "VARCHAR",
+          "len": "1",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "YesNo",
+          "dataBaseField": true,
+          "dtoAdd": true,
+          "dtoUpdate": true,
+          "dtoList": true,
+          "dtoSearch": false,
+          "uiHint": "CheckBox"
+        }
+      ],
+      "entityInitProperties": {}
+    },
+    "javaHome": "",
+    "sql": {
+      "delimiter": ""
+    },
+    "dataTypeSupports": [
+      "MYSQL",
+      "ORACLE",
+      "SQLServer",
+      "PostgreSQL",
+      "DB2",
+      "DM",
+      "GaussDB",
+      "Kingbase",
+      "JAVA",
+      "C#"
+    ],
+    "codeTemplates": [
+      {
+        "type": "dbDDL",
+        "isDefault": true,
+        "applyFor": "MYSQL",
+        "createTable": "DROP TABLE IF EXISTS {{=it.entity.defKey}};\nCREATE TABLE {{=it.entity.defKey}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.primaryKey }}{{ pkList.push(field.defKey) }}{{?}}\n    {{=field.defKey}} {{=field.type}}{{?field.len>0}}{{='('}}{{=field.len}}{{?field.scale>0}}{{=','}}{{=field.scale}}{{?}}{{=')'}}{{?}} {{= field.notNull ? 'NOT NULL' : '' }} {{= field.autoIncrement ? 'AUTO_INCREMENT' : '' }} {{= field.defaultValue ? it.func.join('DEFAULT',field.defaultValue,' ') : '' }} COMMENT '{{=it.func.join(field.defName,field.comment,';')}}' {{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n)  COMMENT = '{{=it.func.join(it.entity.defName,it.entity.comment,';') }}';\n$blankline\n",
+        "createIndex": "{{~ it.entity.indexes:index}}\nCREATE {{? index.unique}}UNIQUE {{?}}INDEX {{=index.defKey}} ON {{=it.entity.defKey}}({{ fieldsKeys = index.fields.map(function(field){return field.fieldDefKey}) ; }}{{=it.func.join(...fieldsKeys,',')}});\n{{~}}"
+      },
+      {
+        "type": "dbDDL",
+        "isDefault": true,
+        "applyFor": "ORACLE",
+        "createTable": "CREATE TABLE {{=it.entity.defKey}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.primaryKey }}{{ pkList.push(field.defKey) }}{{?}}\n    {{=field.defKey}} {{=field.type}}{{?field.len>0}}{{='('}}{{=field.len}}{{?field.scale>0}}{{=','}}{{=field.scale}}{{?}}{{=')'}}{{?}}{{= field.notNull ? ' NOT NULL' : '' }}{{= field.autoIncrement ? '' : '' }}{{= field.defaultValue ? it.func.join(' DEFAULT ',field.defaultValue,' ') : '' }}{{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n);\n$blankline\n{{? it.entity.defKey || it.entity.defName}}COMMENT ON TABLE {{=it.entity.defKey}} IS '{{=it.func.join(it.entity.defName,it.entity.comment,';')}}';{{?}}\n{{~it.entity.fields:field:index}}\n{{? field.defName || field.comment}}COMMENT ON COLUMN {{=it.entity.defKey}}.{{=field.defKey}} IS '{{=it.func.join(field.defName,field.comment,';')}}';{{?}}\n{{~}}",
+        "createIndex": "{{~ it.entity.indexes:index}}\nCREATE {{? index.unique}}UNIQUE {{?}}INDEX {{=index.defKey}} ON {{=it.entity.defKey}}({{ fieldsKeys = index.fields.map(function(field){return field.fieldDefKey}) ; }}{{=it.func.join(...fieldsKeys,',')}});\n{{~}}"
+      },
+      {
+        "type": "dbDDL",
+        "isDefault": true,
+        "applyFor": "SQLServer",
+        "createTable": "DROP TABLE IF EXISTS {{=it.entity.defKey}};\nCREATE TABLE {{=it.entity.defKey}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.primaryKey }}{{ pkList.push(field.defKey) }}{{?}}\n    {{=field.defKey}} {{=field.type}}{{?field.len>0}}{{='('}}{{=field.len}}{{?field.scale>0}}{{=','}}{{=field.scale}}{{?}}{{=')'}}{{?}}{{= field.notNull ? ' NOT NULL' : '' }}{{= field.autoIncrement ? ' IDENTITY(1,1)' : '' }}{{= field.defaultValue ? it.func.join(' DEFAULT ',field.defaultValue,' ') : '' }}{{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n){{=it.separator}}\n$blankline\n{{? it.entity.defKey || it.entity.defName}}EXEC sp_addextendedproperty 'MS_Description', '{{=it.func.join(it.entity.defName,it.entity.comment,';')}}', 'SCHEMA', dbo, 'table', {{=it.entity.defKey}}, null, null;{{?}}\n{{~it.entity.fields:field:index}}\nEXEC sp_addextendedproperty 'MS_Description', '{{=it.func.join(field.defName,field.comment,';')}}', 'SCHEMA', dbo, 'table', {{=it.entity.defKey}}, 'column', {{=field.defKey}};\n{{~}}",
+        "createIndex": "{{~ it.entity.indexes:index}}\nCREATE {{? index.unique}}UNIQUE {{?}}INDEX {{=index.defKey}} ON {{=it.entity.defKey}}({{ fieldsKeys = index.fields.map(function(field){return field.fieldDefKey}) ; }}{{=it.func.join(...fieldsKeys,',')}});\n{{~}}"
+      },
+      {
+        "type": "dbDDL",
+        "isDefault": true,
+        "applyFor": "PostgreSQL",
+        "createTable": "DROP TABLE IF EXISTS {{=it.entity.defKey}};\nCREATE TABLE {{=it.entity.defKey}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.primaryKey }}{{ pkList.push(field.defKey) }}{{?}}\n    {{=field.defKey}} {{=field.type}}{{?field.len>0}}{{='('}}{{=field.len}}{{?field.scale>0}}{{=','}}{{=field.scale}}{{?}}{{=')'}}{{?}}{{= field.notNull ? ' NOT NULL' : '' }}{{= field.autoIncrement ? ' AUTO_INCREMENT' : '' }}{{= field.defaultValue ? it.func.join(' DEFAULT ',field.defaultValue,' ') : '' }}{{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n);\n$blankline\n{{? it.entity.defKey || it.entity.defName}}COMMENT ON TABLE {{=it.entity.defKey}} IS '{{=it.func.join(it.entity.defName,it.entity.comment,';')}}';{{?}}\n{{~it.entity.fields:field:index}}\n{{? field.defName || field.comment}}COMMENT ON COLUMN {{=it.entity.defKey}}.{{=field.defKey}} IS '{{=it.func.join(field.defName,field.comment,';')}}';{{?}}\n{{~}}",
+        "createIndex": "{{~ it.entity.indexes:index}}\nCREATE {{? index.unique}}UNIQUE {{?}}INDEX {{=index.defKey}} ON {{=it.entity.defKey}}({{ fieldsKeys = index.fields.map(function(field){return field.fieldDefKey}) ; }}{{=it.func.join(...fieldsKeys,',')}});\n{{~}}"
+      },
+      {
+        "type": "appCode",
+        "isDefault": true,
+        "applyFor": "JAVA",
+        "content": "package cn.com.chiner.entity;\n$blankline\nimport javax.persistence.*;\nimport java.io.Serializable;\nimport java.util.Date;\n$blankline\n{{\n    var today=new Date();\n    var fullYear=today.getFullYear();\n    var month=today.getMonth() + 1;\n    var days=today.getDate();\n}}\n /**\n * @author : http://www.chiner.pro\n * @date : {{=fullYear}}-{{=month}}-{{=days}}\n * @desc : {{=it.func.join(it.entity.defName,it.entity.comment,'-')}}\n */\n@Table(name=\"{{=it.entity.defKey}}\")\npublic class {{=it.func.camel(it.entity.defKey,true) }} implements Serializable,Cloneable{\n{{~it.entity.fields:field:index}}\n    /** {{=it.func.join(field.defName,field.comment,';')}} */\n    {{? field.primaryKey }}\n    @Id\n    @GeneratedValue\n    {{?}}\n    private {{=field.type}} {{=it.func.camel(field.defKey,false)}} ;\n{{~}}\n$blankline\n\n{{~it.entity.fields:field:index}}\n    /** {{=it.func.join(field.defName,field.comment,';')}} */\n    public {{=field.type}} get{{=it.func.camel(field.defKey,true)}}(){\n        return this.{{=it.func.camel(field.defKey,false)}};\n    }\n    /** {{=it.func.join(field.defName,field.comment,';')}} */\n    public void set{{=it.func.camel(field.defKey,true)}}({{=field.type}} {{= it.func.camel(field.defKey,false) }}){\n        return this.{{=it.func.camel(field.defKey,false)}}={{=it.func.camel(field.defKey,false)}};\n    }\n{{~}}\n}"
+      },
+      {
+        "type": "dbDDL",
+        "isDefault": true,
+        "applyFor": "DB2",
+        "createTable": "CREATE TABLE {{=it.entity.defKey}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.primaryKey }}{{ pkList.push(field.defKey) }}{{?}}\n    {{=field.defKey}} {{=field.type}}{{?field.len>0}}{{='('}}{{=field.len}}{{?field.scale>0}}{{=','}}{{=field.scale}}{{?}}{{=')'}}{{?}}{{= field.notNull ? ' NOT NULL' : '' }}{{= field.autoIncrement ? '' : '' }}{{= field.defaultValue ? it.func.join(' DEFAULT ',field.defaultValue,' ') : '' }}{{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n);\n$blankline\n{{? it.entity.defKey || it.entity.defName}}COMMENT ON TABLE {{=it.entity.defKey}} IS '{{=it.func.join(it.entity.defName,it.entity.comment,';')}}';{{?}}\n{{~it.entity.fields:field:index}}\n{{? field.defName || field.comment}}COMMENT ON COLUMN {{=it.entity.defKey}}.{{=field.defKey}} IS '{{=it.func.join(field.defName,field.comment,';')}}';{{?}}\n{{~}}",
+        "createIndex": "{{~ it.entity.indexes:index}}\nCREATE {{? index.unique}}UNIQUE {{?}}INDEX {{=index.defKey}} ON {{=it.entity.defKey}}({{ fieldsKeys = index.fields.map(function(field){return field.fieldDefKey}) ; }}{{=it.func.join(...fieldsKeys,',')}});\n{{~}}"
+      },
+      {
+        "type": "dbDDL",
+        "isDefault": true,
+        "applyFor": "DM",
+        "createTable": "CREATE TABLE {{=it.entity.defKey}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.primaryKey }}{{ pkList.push(field.defKey) }}{{?}}\n    {{=field.defKey}} {{=field.type}}{{?field.len>0}}{{='('}}{{=field.len}}{{?field.scale>0}}{{=','}}{{=field.scale}}{{?}}{{=')'}}{{?}}{{= field.notNull ? ' NOT NULL' : '' }}{{= field.autoIncrement ? '' : '' }}{{= field.defaultValue ? it.func.join(' DEFAULT ','('+field.defaultValue+')',' ') : '' }}{{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n);\n$blankline\n{{? it.entity.defKey || it.entity.defName}}COMMENT ON TABLE {{=it.entity.defKey}} IS '{{=it.func.join(it.entity.defName,it.entity.comment,';')}}';{{?}}\n{{~it.entity.fields:field:index}}\n{{? field.defName || field.comment}}COMMENT ON COLUMN {{=it.entity.defKey}}.{{=field.defKey}} IS '{{=it.func.join(field.defName,field.comment,';')}}';{{?}}\n{{~}}",
+        "createIndex": "{{~ it.entity.indexes:index}}\nCREATE {{? index.unique}}UNIQUE {{?}}INDEX {{=index.defKey}} ON {{=it.entity.defKey}}({{ fieldsKeys = index.fields.map(function(field){return field.fieldDefKey}) ; }}{{=it.func.join(...fieldsKeys,',')}});\n{{~}}"
+      },
+      {
+        "type": "appCode",
+        "isDefault": true,
+        "applyFor": "C#",
+        "content": "using System;\nusing System.Collections.Generic;\n\n$blankline\n{{\n    var today=new Date();\n    var fullYear=today.getFullYear();\n    var month=today.getMonth() + 1;\n    var days=today.getDate();\n}}\n/*\n * @author : http://www.chiner.com.cn\n * @date : {{=fullYear}}-{{=month}}-{{=days}}\n * @desc : {{=it.func.join(it.entity.defName,it.entity.comment,'-')}}\n */\nnamespace Chiner.Application\n{\n    public partial class {{=it.func.camel(it.entity.defKey,true) }}\n    {\n    \n        {{~it.entity.fields:field:index}}\n        /// <summary>\n        /// {{=it.func.join(field.defName,field.comment,';')}}\n        /// </summary>\n        public {{=field.type}} {{=it.func.camel(field.defKey,true)}} { get; set; }\n        $blankline\n        {{~}}\n        \n    }\n}"
+      },
+      {
+        "type": "dbDDL",
+        "isDefault": true,
+        "applyFor": "GaussDB",
+        "createTable": "DROP TABLE IF EXISTS {{=it.entity.defKey}};\nCREATE TABLE {{=it.entity.defKey}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.primaryKey }}{{ pkList.push(field.defKey) }}{{?}}\n    {{=field.defKey}} {{=field.type}}{{?field.len>0}}{{='('}}{{=field.len}}{{?field.scale>0}}{{=','}}{{=field.scale}}{{?}}{{=')'}}{{?}}{{= field.notNull ? ' NOT NULL' : '' }}{{= field.autoIncrement ? ' AUTO_INCREMENT' : '' }}{{= field.defaultValue ? it.func.join(' DEFAULT ',field.defaultValue,' ') : '' }}{{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n);\n$blankline\n{{? it.entity.defKey || it.entity.defName}}COMMENT ON TABLE {{=it.entity.defKey}} IS '{{=it.func.join(it.entity.defName,it.entity.comment,';')}}';{{?}}\n{{~it.entity.fields:field:index}}\n{{? field.defName || field.comment}}COMMENT ON COLUMN {{=it.entity.defKey}}.{{=field.defKey}} IS '{{=it.func.join(field.defName,field.comment,';')}}';{{?}}\n{{~}}",
+        "createIndex": "{{~ it.entity.indexes:index}}\nCREATE {{? index.unique}}UNIQUE {{?}}INDEX {{=index.defKey}} ON {{=it.entity.defKey}}({{ fieldsKeys = index.fields.map(function(field){return field.fieldDefKey}) ; }}{{=it.func.join(...fieldsKeys,',')}});\n{{~}}"
+      },
+      {
+        "type": "dbDDL",
+        "isDefault": true,
+        "applyFor": "Kingbase",
+        "createTable": "DROP TABLE IF EXISTS {{=it.entity.defKey}};\nCREATE TABLE {{=it.entity.defKey}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.primaryKey }}{{ pkList.push(field.defKey) }}{{?}}\n    {{=field.defKey}} {{=field.type}}{{?field.len>0}}{{='('}}{{=field.len}}{{?field.scale>0}}{{=','}}{{=field.scale}}{{?}}{{=')'}}{{?}}{{= field.notNull ? ' NOT NULL' : '' }}{{= field.autoIncrement ? ' AUTO_INCREMENT' : '' }}{{= field.defaultValue ? it.func.join(' DEFAULT ',field.defaultValue,' ') : '' }}{{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n);\n$blankline\n{{? it.entity.defKey || it.entity.defName}}COMMENT ON TABLE {{=it.entity.defKey}} IS '{{=it.func.join(it.entity.defName,it.entity.comment,';')}}';{{?}}\n{{~it.entity.fields:field:index}}\n{{? field.defName || field.comment}}COMMENT ON COLUMN {{=it.entity.defKey}}.{{=field.defKey}} IS '{{=it.func.join(field.defName,field.comment,';')}}';{{?}}\n{{~}}",
+        "createIndex": "{{~ it.entity.indexes:index}}\nCREATE {{? index.unique}}UNIQUE {{?}}INDEX {{=index.defKey}} ON {{=it.entity.defKey}}({{ fieldsKeys = index.fields.map(function(field){return field.fieldDefKey}) ; }}{{=it.func.join(...fieldsKeys,',')}});\n{{~}}"
+      },
+      {
+        "type": "dbDDL",
+        "applyFor": "dictSQLTemplate",
+        "content": "/* 插入字典总表[{{=it.dict.defKey}}-{{=it.dict.defName}}] */\nINSERT INTO SYS_DICT(KEY_,LABEL,INTRO,REVISION) VALUES('{{=it.dict.defKey}}','{{=it.dict.defName}}','{{=it.dict.intro}}',1);\n/* 插入字典明细表 */\n{{~it.dict.items:item:index}}\nINSERT INTO SYS_DICT_ITEM(DICT_KEY,KEY_,LABEL,SORT_,INTRO,REVISION) VALUES('{{=it.dict.defKey}}','{{=item.defKey}}','{{=item.defName}}','{{=item.sort}}','{{=item.intro}}',1);\n{{~}}"
+      }
+    ],
+    "generatorDoc": {
+      "docTemplate": ""
+    },
+    "relationFieldSize": "15",
+    "uiHint": [
+      {
+        "defKey": "Input",
+        "defName": "普通输入框"
+      },
+      {
+        "defKey": "Select",
+        "defName": "下拉输入框"
+      },
+      {
+        "defKey": "SelectMult",
+        "defName": "下拉(多选)输入框"
+      },
+      {
+        "defKey": "CheckBox",
+        "defName": "复选框"
+      },
+      {
+        "defKey": "RadioBox",
+        "defName": "单选框"
+      },
+      {
+        "defKey": "Double",
+        "defName": "小数输入"
+      },
+      {
+        "defKey": "Integer",
+        "defName": "整数输入"
+      },
+      {
+        "defKey": "Money",
+        "defName": "金额输入"
+      },
+      {
+        "defKey": "Date",
+        "defName": "日期输入"
+      },
+      {
+        "defKey": "DataYearMonth",
+        "defName": "年月输入"
+      },
+      {
+        "defKey": "Text",
+        "defName": "长文本输入"
+      },
+      {
+        "defKey": "RichText",
+        "defName": "富文本输入"
+      },
+      {
+        "defKey": "Password",
+        "defName": "密码输入框"
+      },
+      {
+        "defKey": "SelectTreeMult",
+        "defName": "下拉(多选)树"
+      },
+      {
+        "defKey": "SelectIcon",
+        "defName": "Icon选择"
+      }
+    ]
+  },
+  "entities": [
+    {
+      "defKey": "User",
+      "defName": "用户管理",
+      "comment": "Permission",
+      "properties": {},
+      "nameTemplate": "{defKey}[{defName}]",
+      "headers": [
+        {
+          "freeze": false,
+          "refKey": "hideInGraph",
+          "hideInGraph": true
+        },
+        {
+          "freeze": true,
+          "refKey": "defKey",
+          "hideInGraph": false
+        },
+        {
+          "freeze": true,
+          "refKey": "defName",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "primaryKey",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "notNull",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dataBaseField",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dtoAdd",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dtoUpdate",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dtoList",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dtoSearch",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "parentId",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "autoIncrement",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "domain",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "type",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "len",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "scale",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "comment",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "refDict",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "defaultValue",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "isStandard",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "uiHint",
+          "hideInGraph": true
+        }
+      ],
+      "fields": [
+        {
+          "defKey": "Id",
+          "defName": "pk",
+          "comment": "",
+          "type": "INT",
+          "len": "",
+          "scale": "",
+          "primaryKey": true,
+          "notNull": true,
+          "autoIncrement": true,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "domain": "Int",
+          "dataBaseField": true,
+          "dtoUpdate": true,
+          "dtoList": true
+        },
+        {
+          "defKey": "Revision",
+          "defName": "乐观锁",
+          "comment": "",
+          "domain": "Int",
+          "type": "INT",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "CreatedBy",
+          "defName": "创建人",
+          "comment": "",
+          "domain": "DefaultString",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "CreatedTime",
+          "defName": "创建时间",
+          "comment": "",
+          "domain": "DateTime",
+          "type": "DATETIME",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "UpdatedBy",
+          "defName": "更新人",
+          "comment": "",
+          "domain": "DefaultString",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "UpdatedTime",
+          "defName": "更新时间",
+          "comment": "",
+          "domain": "DateTime",
+          "type": "DATETIME",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "Name",
+          "defName": "名称",
+          "comment": "",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": true,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "DefaultString",
+          "dataBaseField": true,
+          "dtoAdd": true,
+          "dtoUpdate": true,
+          "dtoList": true,
+          "dtoSearch": true,
+          "parentId": false,
+          "uiHint": "Input"
+        },
+        {
+          "defKey": "Enable",
+          "defName": "是否启用",
+          "comment": "",
+          "type": "VARCHAR",
+          "len": "1",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "domain": "YesNo",
+          "dataBaseField": true,
+          "dtoAdd": true,
+          "dtoUpdate": true,
+          "dtoList": true
+        },
+        {
+          "defKey": "Password",
+          "defName": "密码",
+          "comment": "",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": true,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "Password",
+          "dataBaseField": true,
+          "dtoAdd": true,
+          "dtoUpdate": false,
+          "dtoList": false,
+          "dtoSearch": true,
+          "uiHint": "Password"
+        },
+        {
+          "defKey": "UserName",
+          "defName": "账户名",
+          "comment": "",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": true,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "DefaultString",
+          "dataBaseField": true,
+          "dtoAdd": true,
+          "dtoUpdate": false,
+          "dtoList": true,
+          "dtoSearch": true,
+          "uiHint": "Input"
+        },
+        {
+          "defKey": "Role",
+          "defName": "角色",
+          "comment": "",
+          "type": "INT",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "List<int>",
+          "dtoAdd": true,
+          "dtoUpdate": true,
+          "uiHint": "SelectMult"
+        }
+      ],
+      "correlations": [],
+      "indexes": []
+    },
+    {
+      "defKey": "UserRole",
+      "defName": "用户角色管理",
+      "comment": "Permission",
+      "properties": {},
+      "nameTemplate": "{defKey}[{defName}]",
+      "headers": [
+        {
+          "freeze": false,
+          "refKey": "hideInGraph",
+          "hideInGraph": true
+        },
+        {
+          "freeze": true,
+          "refKey": "defKey",
+          "hideInGraph": false
+        },
+        {
+          "freeze": true,
+          "refKey": "defName",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "primaryKey",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "notNull",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dataBaseField",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dtoAdd",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dtoUpdate",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dtoList",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dtoSearch",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "parentId",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "autoIncrement",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "domain",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "type",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "len",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "scale",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "comment",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "refDict",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "defaultValue",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "isStandard",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "uiHint",
+          "hideInGraph": true
+        }
+      ],
+      "fields": [
+        {
+          "defKey": "Id",
+          "defName": "pk",
+          "comment": "",
+          "type": "INT",
+          "len": "",
+          "scale": "",
+          "primaryKey": true,
+          "notNull": true,
+          "autoIncrement": true,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "domain": "Int",
+          "dataBaseField": true,
+          "dtoUpdate": true,
+          "dtoList": true
+        },
+        {
+          "defKey": "Revision",
+          "defName": "乐观锁",
+          "comment": "",
+          "domain": "Int",
+          "type": "INT",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "CreatedBy",
+          "defName": "创建人",
+          "comment": "",
+          "domain": "DefaultString",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "CreatedTime",
+          "defName": "创建时间",
+          "comment": "",
+          "domain": "DateTime",
+          "type": "DATETIME",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "UpdatedBy",
+          "defName": "更新人",
+          "comment": "",
+          "domain": "DefaultString",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "UpdatedTime",
+          "defName": "更新时间",
+          "comment": "",
+          "domain": "DateTime",
+          "type": "DATETIME",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "Name",
+          "defName": "名称",
+          "comment": "",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "DefaultString",
+          "dataBaseField": true,
+          "dtoAdd": false,
+          "dtoUpdate": false,
+          "dtoList": false,
+          "dtoSearch": false,
+          "parentId": false,
+          "uiHint": "Input"
+        },
+        {
+          "defKey": "Enable",
+          "defName": "是否启用",
+          "comment": "",
+          "type": "VARCHAR",
+          "len": "1",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "YesNo",
+          "dataBaseField": true,
+          "dtoAdd": true,
+          "dtoUpdate": true,
+          "dtoList": true,
+          "dtoSearch": false,
+          "uiHint": "CheckBox"
+        },
+        {
+          "defKey": "UserId",
+          "defName": "用户",
+          "comment": "",
+          "type": "INT",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": true,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "Int",
+          "dataBaseField": true,
+          "dtoAdd": true,
+          "dtoUpdate": true,
+          "dtoList": false,
+          "uiHint": "Select"
+        },
+        {
+          "defKey": "User_Name",
+          "defName": "用户名称",
+          "comment": "",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "DefaultString",
+          "dataBaseField": false,
+          "dtoList": true,
+          "dtoAdd": false,
+          "dtoUpdate": false
+        },
+        {
+          "defKey": "RoleId",
+          "defName": "角色",
+          "comment": "",
+          "type": "INT",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": true,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "Int",
+          "dataBaseField": true,
+          "dtoAdd": true,
+          "dtoUpdate": true,
+          "dtoList": false,
+          "uiHint": "Select"
+        },
+        {
+          "defKey": "Role_Name",
+          "defName": "角色名称",
+          "comment": "",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "DefaultString",
+          "dtoList": true
+        }
+      ],
+      "correlations": [
+        {
+          "myField": "RoleId",
+          "refEntity": "Role",
+          "refField": "Id",
+          "myRows": "n",
+          "refRows": "1",
+          "innerType": ""
+        },
+        {
+          "myField": "UserId",
+          "refEntity": "User",
+          "refField": "Id",
+          "myRows": "n",
+          "refRows": "1",
+          "innerType": ""
+        }
+      ],
+      "indexes": []
+    },
+    {
+      "defKey": "Role",
+      "defName": "角色管理",
+      "comment": "Permission",
+      "properties": {},
+      "nameTemplate": "{defKey}[{defName}]",
+      "headers": [
+        {
+          "freeze": false,
+          "refKey": "hideInGraph",
+          "hideInGraph": true
+        },
+        {
+          "freeze": true,
+          "refKey": "defKey",
+          "hideInGraph": false
+        },
+        {
+          "freeze": true,
+          "refKey": "defName",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "primaryKey",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "notNull",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dataBaseField",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dtoAdd",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dtoUpdate",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dtoList",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dtoSearch",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "parentId",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "autoIncrement",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "domain",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "type",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "len",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "scale",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "comment",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "refDict",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "defaultValue",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "isStandard",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "uiHint",
+          "hideInGraph": true
+        }
+      ],
+      "fields": [
+        {
+          "defKey": "Id",
+          "defName": "pk",
+          "comment": "",
+          "type": "INT",
+          "len": "",
+          "scale": "",
+          "primaryKey": true,
+          "notNull": true,
+          "autoIncrement": true,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "domain": "Int",
+          "dataBaseField": true,
+          "dtoUpdate": true,
+          "dtoList": true
+        },
+        {
+          "defKey": "Revision",
+          "defName": "乐观锁",
+          "comment": "",
+          "domain": "Int",
+          "type": "INT",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "CreatedBy",
+          "defName": "创建人",
+          "comment": "",
+          "domain": "DefaultString",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "CreatedTime",
+          "defName": "创建时间",
+          "comment": "",
+          "domain": "DateTime",
+          "type": "DATETIME",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "UpdatedBy",
+          "defName": "更新人",
+          "comment": "",
+          "domain": "DefaultString",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "UpdatedTime",
+          "defName": "更新时间",
+          "comment": "",
+          "domain": "DateTime",
+          "type": "DATETIME",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "Enable",
+          "defName": "是否启用",
+          "comment": "",
+          "type": "VARCHAR",
+          "len": "1",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "domain": "YesNo",
+          "dataBaseField": true,
+          "dtoAdd": true,
+          "dtoUpdate": true,
+          "dtoList": true
+        },
+        {
+          "defKey": "Name",
+          "defName": "名称",
+          "comment": "",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": true,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "DefaultString",
+          "dataBaseField": true,
+          "dtoAdd": true,
+          "dtoUpdate": true,
+          "dtoList": true,
+          "dtoSearch": true,
+          "parentId": false,
+          "uiHint": "Input"
+        },
+        {
+          "defKey": "Menu",
+          "defName": "菜单",
+          "comment": "",
+          "type": "INT",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "refDict": "",
+          "domain": "List<int>",
+          "dtoAdd": true,
+          "dtoUpdate": true,
+          "uiHint": "SelectTreeMult"
+        }
+      ],
+      "correlations": [],
+      "indexes": []
+    },
+    {
+      "defKey": "Menu",
+      "defName": "菜单管理",
+      "comment": "Permission",
+      "properties": {},
+      "nameTemplate": "{defKey}[{defName}]",
+      "headers": [
+        {
+          "freeze": false,
+          "refKey": "hideInGraph",
+          "hideInGraph": true
+        },
+        {
+          "freeze": true,
+          "refKey": "defKey",
+          "hideInGraph": false
+        },
+        {
+          "freeze": true,
+          "refKey": "defName",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "primaryKey",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "notNull",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dataBaseField",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dtoAdd",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dtoUpdate",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dtoList",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dtoSearch",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "parentId",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "autoIncrement",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "domain",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "type",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "len",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "scale",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "comment",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "refDict",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "defaultValue",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "isStandard",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "uiHint",
+          "hideInGraph": true
+        }
+      ],
+      "fields": [
+        {
+          "defKey": "Id",
+          "defName": "pk",
+          "comment": "",
+          "type": "INT",
+          "len": "",
+          "scale": "",
+          "primaryKey": true,
+          "notNull": true,
+          "autoIncrement": true,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "domain": "Int",
+          "dataBaseField": true,
+          "dtoUpdate": true,
+          "dtoList": true
+        },
+        {
+          "defKey": "Revision",
+          "defName": "乐观锁",
+          "comment": "",
+          "domain": "Int",
+          "type": "INT",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "CreatedBy",
+          "defName": "创建人",
+          "comment": "",
+          "domain": "DefaultString",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "CreatedTime",
+          "defName": "创建时间",
+          "comment": "",
+          "domain": "DateTime",
+          "type": "DATETIME",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "UpdatedBy",
+          "defName": "更新人",
+          "comment": "",
+          "domain": "DefaultString",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "UpdatedTime",
+          "defName": "更新时间",
+          "comment": "",
+          "domain": "DateTime",
+          "type": "DATETIME",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "Enable",
+          "defName": "是否启用",
+          "comment": "",
+          "type": "VARCHAR",
+          "len": "1",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "domain": "YesNo",
+          "dataBaseField": true,
+          "dtoAdd": true,
+          "dtoUpdate": true,
+          "dtoList": true
+        },
+        {
+          "defKey": "Name",
+          "defName": "名称",
+          "comment": "",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": true,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "DefaultString",
+          "dataBaseField": true,
+          "dtoAdd": true,
+          "dtoUpdate": true,
+          "dtoList": true,
+          "dtoSearch": true,
+          "parentId": false,
+          "uiHint": "Input"
+        },
+        {
+          "defKey": "ParentId",
+          "defName": "父级Id",
+          "comment": "",
+          "type": "INT",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "Int",
+          "dataBaseField": true,
+          "dtoAdd": true,
+          "dtoUpdate": true,
+          "parentId": true,
+          "uiHint": "Select",
+          "dtoList": true
+        },
+        {
+          "defKey": "Url",
+          "defName": "链接地址",
+          "comment": "",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": true,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "DefaultString",
+          "dataBaseField": true,
+          "dtoAdd": true,
+          "dtoUpdate": true,
+          "dtoList": true,
+          "dtoSearch": true,
+          "uiHint": "Input"
+        },
+        {
+          "defKey": "ActionType",
+          "defName": "菜单类型",
+          "comment": "",
+          "type": "VARCHAR",
+          "len": "32",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": true,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "MenuType",
+          "domain": "Dict",
+          "dataBaseField": true,
+          "dtoAdd": true,
+          "dtoUpdate": true,
+          "dtoList": true,
+          "uiHint": "Select"
+        },
+        {
+          "defKey": "Icon",
+          "defName": "图标",
+          "comment": "",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "DefaultString",
+          "dataBaseField": true,
+          "dtoAdd": true,
+          "dtoUpdate": true,
+          "dtoList": true,
+          "uiHint": "SelectIcon"
+        }
+      ],
+      "correlations": [],
+      "indexes": []
+    },
+    {
+      "defKey": "RoleMenu",
+      "defName": "角色菜单管理",
+      "comment": "Permission",
+      "properties": {},
+      "nameTemplate": "{defKey}[{defName}]",
+      "headers": [
+        {
+          "freeze": false,
+          "refKey": "hideInGraph",
+          "hideInGraph": true
+        },
+        {
+          "freeze": true,
+          "refKey": "defKey",
+          "hideInGraph": false
+        },
+        {
+          "freeze": true,
+          "refKey": "defName",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "primaryKey",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "notNull",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dataBaseField",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dtoAdd",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dtoUpdate",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dtoList",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "dtoSearch",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "parentId",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "autoIncrement",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "domain",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "type",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "len",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "scale",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "comment",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "refDict",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "defaultValue",
+          "hideInGraph": true
+        },
+        {
+          "freeze": false,
+          "refKey": "isStandard",
+          "hideInGraph": false
+        },
+        {
+          "freeze": false,
+          "refKey": "uiHint",
+          "hideInGraph": true
+        }
+      ],
+      "fields": [
+        {
+          "defKey": "Id",
+          "defName": "pk",
+          "comment": "",
+          "type": "INT",
+          "len": "",
+          "scale": "",
+          "primaryKey": true,
+          "notNull": true,
+          "autoIncrement": true,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "domain": "Int",
+          "dataBaseField": true,
+          "dtoUpdate": true,
+          "dtoList": true
+        },
+        {
+          "defKey": "Revision",
+          "defName": "乐观锁",
+          "comment": "",
+          "domain": "Int",
+          "type": "INT",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "CreatedBy",
+          "defName": "创建人",
+          "comment": "",
+          "domain": "DefaultString",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "CreatedTime",
+          "defName": "创建时间",
+          "comment": "",
+          "domain": "DateTime",
+          "type": "DATETIME",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "UpdatedBy",
+          "defName": "更新人",
+          "comment": "",
+          "domain": "DefaultString",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "UpdatedTime",
+          "defName": "更新时间",
+          "comment": "",
+          "domain": "DateTime",
+          "type": "DATETIME",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": true,
+          "dataBaseField": true
+        },
+        {
+          "defKey": "Enable",
+          "defName": "是否启用",
+          "comment": "",
+          "type": "VARCHAR",
+          "len": "1",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "domain": "YesNo",
+          "dataBaseField": true,
+          "dtoAdd": true,
+          "dtoUpdate": true,
+          "dtoList": true
+        },
+        {
+          "defKey": "RoleId",
+          "defName": "角色",
+          "comment": "",
+          "type": "INT",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "Int",
+          "dataBaseField": true,
+          "dtoAdd": true,
+          "dtoUpdate": true,
+          "dtoList": false,
+          "uiHint": "Select"
+        },
+        {
+          "defKey": "Role_Name",
+          "defName": "角色名称",
+          "comment": "",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "DefaultString",
+          "dtoAdd": false,
+          "dtoList": true
+        },
+        {
+          "defKey": "MenuId",
+          "defName": "菜单",
+          "comment": "",
+          "type": "INT",
+          "len": "",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "Int",
+          "dataBaseField": true,
+          "dtoAdd": true,
+          "dtoUpdate": true,
+          "uiHint": "Select"
+        },
+        {
+          "defKey": "Menu_Name",
+          "defName": "菜单名称",
+          "comment": "",
+          "type": "VARCHAR",
+          "len": "60",
+          "scale": "",
+          "primaryKey": false,
+          "notNull": false,
+          "autoIncrement": false,
+          "defaultValue": "",
+          "hideInGraph": false,
+          "refDict": "",
+          "domain": "DefaultString",
+          "dataBaseField": false,
+          "dtoList": true
+        }
+      ],
+      "correlations": [
+        {
+          "myField": "RoleId",
+          "refEntity": "Role",
+          "refField": "Id",
+          "myRows": "n",
+          "refRows": "1",
+          "innerType": ""
+        },
+        {
+          "myField": "MenuId",
+          "refEntity": "Menu",
+          "refField": "Id",
+          "myRows": "n",
+          "refRows": "1",
+          "innerType": ""
+        }
+      ],
+      "indexes": []
+    }
+  ],
+  "views": [],
+  "dicts": [
+    {
+      "defKey": "MenuType",
+      "defName": "菜单类型",
+      "sort": "",
+      "intro": "",
+      "items": [
+        {
+          "defKey": "Menu",
+          "defName": "菜单",
+          "sort": "",
+          "parentKey": "",
+          "intro": "",
+          "enabled": true,
+          "attr1": "",
+          "attr2": "",
+          "attr3": "",
+          "__key": "40C23E24-6D06-4699-BFC1-0EAB4A74CAA3"
+        },
+        {
+          "defKey": "Add",
+          "defName": "添加",
+          "sort": "",
+          "parentKey": "",
+          "intro": "",
+          "enabled": true,
+          "attr1": "",
+          "attr2": "",
+          "attr3": "",
+          "__key": "FA47DFD2-9153-4D56-97BB-EB9514E0823F"
+        },
+        {
+          "defKey": "Update",
+          "defName": "修改",
+          "sort": "",
+          "parentKey": "",
+          "intro": "",
+          "enabled": true,
+          "attr1": "",
+          "attr2": "",
+          "attr3": "",
+          "__key": "8796F2C7-C896-4E2D-87B1-1EF05FE39B88"
+        },
+        {
+          "defKey": "Del",
+          "defName": "删除",
+          "sort": "",
+          "parentKey": "",
+          "intro": "",
+          "enabled": true,
+          "attr1": "",
+          "attr2": "",
+          "attr3": "",
+          "__key": "72D3AB07-A1D5-4869-A9A8-187AB56540AD"
+        },
+        {
+          "defKey": "Search",
+          "defName": "搜索",
+          "sort": "",
+          "parentKey": "",
+          "intro": "",
+          "enabled": true,
+          "attr1": "",
+          "attr2": "",
+          "attr3": "",
+          "__key": "101DAF8F-DAE9-4FD8-B28C-0542E67D0BA6"
+        }
+      ]
+    }
+  ],
+  "viewGroups": [],
+  "dataTypeMapping": {
+    "referURL": "",
+    "mappings": [
+      {
+        "defKey": "string",
+        "defName": "字串",
+        "JAVA": "String",
+        "ORACLE": "VARCHAR2",
+        "MYSQL": "VARCHAR",
+        "SQLServer": "VARCHAR",
+        "PostgreSQL": "VARCHAR",
+        "DB2": "VARCHAR",
+        "DM": "VARCHAR2",
+        "C#": "string"
+      },
+      {
+        "defKey": "double",
+        "defName": "小数",
+        "JAVA": "Double",
+        "ORACLE": "DECIMAL",
+        "MYSQL": "DECIMAL",
+        "SQLServer": "DECIMAL",
+        "PostgreSQL": "NUMERIC",
+        "DB2": "DECIMAL",
+        "DM": "DECIMAL",
+        "C#": "float"
+      },
+      {
+        "defKey": "int",
+        "defName": "整数",
+        "JAVA": "Integer",
+        "ORACLE": "INT",
+        "MYSQL": "INT",
+        "SQLServer": "INT",
+        "PostgreSQL": "INTEGER",
+        "DB2": "INT",
+        "DM": "INTEGER",
+        "C#": "float"
+      },
+      {
+        "defKey": "date",
+        "defName": "日期",
+        "JAVA": "Date",
+        "ORACLE": "DATE",
+        "MYSQL": "DATETIME",
+        "SQLServer": "DATETIME",
+        "PostgreSQL": "DATE",
+        "DB2": "DATE",
+        "DM": "DATE",
+        "C#": "date"
+      },
+      {
+        "defKey": "bytes",
+        "defName": "二进制",
+        "JAVA": "byte[]",
+        "ORACLE": "BLOB",
+        "MYSQL": "BLOB",
+        "PostgreSQL": "BYTEA",
+        "SQLServer": "VARBINARY",
+        "DB2": "BLOB",
+        "DM": "BLOB",
+        "C#": "binary"
+      },
+      {
+        "defKey": "largeText",
+        "defName": "大文本",
+        "JAVA": "String",
+        "ORACLE": "CLOB",
+        "MYSQL": "TEXT",
+        "SQLServer": "TEXT",
+        "PostgreSQL": "TEXT",
+        "DB2": "CLOB",
+        "DM": "CLOB",
+        "C#": "string"
+      }
+    ]
+  },
+  "domains": [
+    {
+      "defKey": "DefaultString",
+      "defName": "默认字串",
+      "applyFor": "string",
+      "len": "60",
+      "scale": "",
+      "uiHint": ""
+    },
+    {
+      "defKey": "IdOrKey",
+      "defName": "主键标识",
+      "applyFor": "string",
+      "len": 32,
+      "scale": "",
+      "uiHint": ""
+    },
+    {
+      "defKey": "Name",
+      "defName": "名称",
+      "applyFor": "string",
+      "len": 90,
+      "scale": "",
+      "uiHint": ""
+    },
+    {
+      "defKey": "Int",
+      "defName": "整数",
+      "applyFor": "int",
+      "len": "",
+      "scale": "",
+      "uiHint": ""
+    },
+    {
+      "defKey": "Double",
+      "defName": "小数",
+      "applyFor": "double",
+      "len": 24,
+      "scale": 6,
+      "uiHint": ""
+    },
+    {
+      "defKey": "Money",
+      "defName": "金额",
+      "applyFor": "double",
+      "len": 24,
+      "scale": 6,
+      "uiHint": ""
+    },
+    {
+      "defKey": "DateTime",
+      "defName": "日期时间",
+      "applyFor": "date",
+      "len": "",
+      "scale": "",
+      "uiHint": ""
+    },
+    {
+      "defKey": "YesNo",
+      "defName": "是否",
+      "applyFor": "string",
+      "len": "1",
+      "scale": "",
+      "uiHint": ""
+    },
+    {
+      "defKey": "Dict",
+      "defName": "数据字典",
+      "applyFor": "string",
+      "len": "32",
+      "scale": "",
+      "uiHint": ""
+    },
+    {
+      "defKey": "DescText",
+      "defName": "描述文本",
+      "applyFor": "string",
+      "len": "900",
+      "scale": "",
+      "uiHint": ""
+    },
+    {
+      "defKey": "List<int>",
+      "defName": "批量添加",
+      "applyFor": "int",
+      "len": "",
+      "scale": "",
+      "uiHint": ""
+    },
+    {
+      "defKey": "Password",
+      "defName": "密码",
+      "applyFor": "string",
+      "len": "60",
+      "scale": "",
+      "uiHint": ""
+    }
+  ],
+  "standardFields": [],
+  "diagrams": [
+    {
+      "defKey": "权限",
+      "defName": "权限",
+      "canvasData": {
+        "cells": [
+          {
+            "id": "ee89c3c6-2b32-4ed9-871a-cd90bbdb0abd",
+            "shape": "table",
+            "position": {
+              "x": 127.5,
+              "y": 68
+            },
+            "count": 0,
+            "originKey": "User"
+          },
+          {
+            "id": "964f0ae2-727f-4374-9e49-91729114a0a8",
+            "shape": "table",
+            "position": {
+              "x": 487.5,
+              "y": 68
+            },
+            "count": 0,
+            "originKey": "UserRole"
+          },
+          {
+            "id": "414943ce-22ee-4e37-a104-8e48ddba5d18",
+            "shape": "table",
+            "position": {
+              "x": 865.5,
+              "y": 329
+            },
+            "count": 0,
+            "originKey": "RoleMenu"
+          },
+          {
+            "id": "357335db-dad2-4052-a302-fad29dd61353",
+            "shape": "table",
+            "position": {
+              "x": 865.5,
+              "y": 540
+            },
+            "count": 0,
+            "originKey": "Menu"
+          },
+          {
+            "id": "11064da7-e03f-4370-8782-bb006416044b",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "65103285-10f1-4fd9-9da7-00bd21d01585",
+              "port": "Id%out"
+            },
+            "target": {
+              "cell": "414943ce-22ee-4e37-a104-8e48ddba5d18",
+              "port": "RoleId%in"
+            },
+            "relation": "1:n",
+            "fillColor": "#ACDAFC"
+          },
+          {
+            "id": "074c6386-94f6-48d3-800b-4a5dddc42dfc",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "65103285-10f1-4fd9-9da7-00bd21d01585",
+              "port": "Id%in"
+            },
+            "target": {
+              "cell": "964f0ae2-727f-4374-9e49-91729114a0a8",
+              "port": "RoleId%in"
+            },
+            "relation": "1:n",
+            "fillColor": "#ACDAFC"
+          },
+          {
+            "id": "dd9c502d-76fc-4a2d-a2df-5ebad6c098e3",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "357335db-dad2-4052-a302-fad29dd61353",
+              "port": "Id%out"
+            },
+            "target": {
+              "cell": "414943ce-22ee-4e37-a104-8e48ddba5d18",
+              "port": "MenuId%out"
+            },
+            "relation": "1:n",
+            "fillColor": "#ACDAFC"
+          },
+          {
+            "id": "a6d1730c-bec2-4500-90f7-1667c49bf321",
+            "shape": "erdRelation",
+            "source": {
+              "cell": "ee89c3c6-2b32-4ed9-871a-cd90bbdb0abd",
+              "port": "Id%out"
+            },
+            "target": {
+              "cell": "964f0ae2-727f-4374-9e49-91729114a0a8",
+              "port": "UserId%in"
+            },
+            "relation": "1:n",
+            "fillColor": "#ACDAFC"
+          },
+          {
+            "id": "65103285-10f1-4fd9-9da7-00bd21d01585",
+            "shape": "table",
+            "position": {
+              "x": 487.5,
+              "y": 329
+            },
+            "count": 0,
+            "originKey": "Role"
+          }
+        ]
+      }
+    }
+  ]
+}

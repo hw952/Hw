@@ -1,0 +1,12 @@
+E:\VsProjects\code\Hw\Hw.Common\bin\Debug\net5.0\Hw.Common.deps.json
+E:\VsProjects\code\Hw\Hw.Common\bin\Debug\net5.0\Hw.Common.dll
+E:\VsProjects\code\Hw\Hw.Common\bin\Debug\net5.0\Hw.Common.pdb
+E:\VsProjects\code\Hw\Hw.Common\obj\Debug\net5.0\Hw.Common.csproj.AssemblyReference.cache
+E:\VsProjects\code\Hw\Hw.Common\obj\Debug\net5.0\Hw.Common.GeneratedMSBuildEditorConfig.editorconfig
+E:\VsProjects\code\Hw\Hw.Common\obj\Debug\net5.0\Hw.Common.AssemblyInfoInputs.cache
+E:\VsProjects\code\Hw\Hw.Common\obj\Debug\net5.0\Hw.Common.AssemblyInfo.cs
+E:\VsProjects\code\Hw\Hw.Common\obj\Debug\net5.0\Hw.Common.csproj.CoreCompileInputs.cache
+E:\VsProjects\code\Hw\Hw.Common\obj\Debug\net5.0\Hw.Common.dll
+E:\VsProjects\code\Hw\Hw.Common\obj\Debug\net5.0\refint\Hw.Common.dll
+E:\VsProjects\code\Hw\Hw.Common\obj\Debug\net5.0\Hw.Common.pdb
+E:\VsProjects\code\Hw\Hw.Common\obj\Debug\net5.0\ref\Hw.Common.dll

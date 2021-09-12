@@ -1,0 +1,12 @@
+E:\VsProjects\code\Hw\Hw.Model\bin\Debug\net5.0\Hw.Model.deps.json
+E:\VsProjects\code\Hw\Hw.Model\bin\Debug\net5.0\Hw.Model.dll
+E:\VsProjects\code\Hw\Hw.Model\bin\Debug\net5.0\Hw.Model.pdb
+E:\VsProjects\code\Hw\Hw.Model\obj\Debug\net5.0\Hw.Model.csproj.AssemblyReference.cache
+E:\VsProjects\code\Hw\Hw.Model\obj\Debug\net5.0\Hw.Model.GeneratedMSBuildEditorConfig.editorconfig
+E:\VsProjects\code\Hw\Hw.Model\obj\Debug\net5.0\Hw.Model.AssemblyInfoInputs.cache
+E:\VsProjects\code\Hw\Hw.Model\obj\Debug\net5.0\Hw.Model.AssemblyInfo.cs
+E:\VsProjects\code\Hw\Hw.Model\obj\Debug\net5.0\Hw.Model.csproj.CoreCompileInputs.cache
+E:\VsProjects\code\Hw\Hw.Model\obj\Debug\net5.0\Hw.Model.dll
+E:\VsProjects\code\Hw\Hw.Model\obj\Debug\net5.0\ref\Hw.Model.dll
+E:\VsProjects\code\Hw\Hw.Model\obj\Debug\net5.0\Hw.Model.pdb
+E:\VsProjects\code\Hw\Hw.Model\obj\Debug\net5.0\refint\Hw.Model.dll

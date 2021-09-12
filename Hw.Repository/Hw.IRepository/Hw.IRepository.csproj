@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>    
+      <PackageReference Include="FreeSql" Version="2.5.200" />    
+      <PackageReference Include="FreeSql.Repository" Version="2.5.200" />
+    </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Hw.Model\Hw.Model.csproj" />
+    <ProjectReference Include="..\..\Hw.Dto\Hw.Dto.csproj" />
+  </ItemGroup>
+
+</Project>

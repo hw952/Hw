@@ -1,0 +1,17 @@
+E:\VsProjects\code\Hw\Hw.Repository\Hw.IRepository\bin\Debug\net5.0\Hw.IRepository.deps.json
+E:\VsProjects\code\Hw\Hw.Repository\Hw.IRepository\bin\Debug\net5.0\Hw.IRepository.dll
+E:\VsProjects\code\Hw\Hw.Repository\Hw.IRepository\bin\Debug\net5.0\Hw.IRepository.pdb
+E:\VsProjects\code\Hw\Hw.Repository\Hw.IRepository\bin\Debug\net5.0\Hw.Dto.dll
+E:\VsProjects\code\Hw\Hw.Repository\Hw.IRepository\bin\Debug\net5.0\Hw.Model.dll
+E:\VsProjects\code\Hw\Hw.Repository\Hw.IRepository\bin\Debug\net5.0\Hw.Model.pdb
+E:\VsProjects\code\Hw\Hw.Repository\Hw.IRepository\bin\Debug\net5.0\Hw.Dto.pdb
+E:\VsProjects\code\Hw\Hw.Repository\Hw.IRepository\obj\Debug\net5.0\Hw.IRepository.csproj.AssemblyReference.cache
+E:\VsProjects\code\Hw\Hw.Repository\Hw.IRepository\obj\Debug\net5.0\Hw.IRepository.GeneratedMSBuildEditorConfig.editorconfig
+E:\VsProjects\code\Hw\Hw.Repository\Hw.IRepository\obj\Debug\net5.0\Hw.IRepository.AssemblyInfoInputs.cache
+E:\VsProjects\code\Hw\Hw.Repository\Hw.IRepository\obj\Debug\net5.0\Hw.IRepository.AssemblyInfo.cs
+E:\VsProjects\code\Hw\Hw.Repository\Hw.IRepository\obj\Debug\net5.0\Hw.IRepository.csproj.CoreCompileInputs.cache
+E:\VsProjects\code\Hw\Hw.Repository\Hw.IRepository\obj\Debug\net5.0\Hw.IRepository.csproj.CopyComplete
+E:\VsProjects\code\Hw\Hw.Repository\Hw.IRepository\obj\Debug\net5.0\Hw.IRepository.dll
+E:\VsProjects\code\Hw\Hw.Repository\Hw.IRepository\obj\Debug\net5.0\ref\Hw.IRepository.dll
+E:\VsProjects\code\Hw\Hw.Repository\Hw.IRepository\obj\Debug\net5.0\Hw.IRepository.pdb
+E:\VsProjects\code\Hw\Hw.Repository\Hw.IRepository\obj\Debug\net5.0\refint\Hw.IRepository.dll

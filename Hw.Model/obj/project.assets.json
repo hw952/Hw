@@ -1,0 +1,104 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0": {
+      "FreeSql/2.5.200": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/FreeSql.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FreeSql.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FreeSql/2.5.200": {
+      "sha512": "lBWses/QVJQkothKmmGskq8FKkkEL99acak4jmDHgheC+XgnP0I8CC69yvfvKR7XFeYc01BXgSTzz8KhYx7OPQ==",
+      "type": "package",
+      "path": "freesql/2.5.200",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "freesql.2.5.200.nupkg.sha512",
+        "freesql.nuspec",
+        "lib/net40/FreeSql.dll",
+        "lib/net40/FreeSql.xml",
+        "lib/net45/FreeSql.dll",
+        "lib/net45/FreeSql.xml",
+        "lib/netstandard2.0/FreeSql.dll",
+        "lib/netstandard2.0/FreeSql.xml",
+        "logo.png"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0": [
+      "FreeSql >= 2.5.200"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "e:\\VsProjects\\code\\Hw\\Hw.Model\\Hw.Model.csproj",
+      "projectName": "Hw.Model",
+      "projectPath": "e:\\VsProjects\\code\\Hw\\Hw.Model\\Hw.Model.csproj",
+      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+      "outputPath": "e:\\VsProjects\\code\\Hw\\Hw.Model\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0": {
+        "targetAlias": "net5.0",
+        "dependencies": {
+          "FreeSql": {
+            "target": "Package",
+            "version": "[2.5.200, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

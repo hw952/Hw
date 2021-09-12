@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "U4ROvbPOBYOFO27VemC73v/5OJ31mFCcqc1vkd8fj43dtHo681aXBq49wzQfhFFsbno4V0EtU70ZJT9o4Ce3bw==",
+  "success": true,
+  "projectFilePath": "E:\\VsProjects\\code\\Hw\\Hw.CodeBuilder\\Hw.CodeBuilder.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.8\\microsoft.netcore.app.host.win-x64.5.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}

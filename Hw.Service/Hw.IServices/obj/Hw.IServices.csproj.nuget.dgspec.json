@@ -1,0 +1,187 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\VsProjects\\code\\Hw\\Hw.Service\\Hw.IServices\\Hw.IServices.csproj": {}
+  },
+  "projects": {
+    "E:\\VsProjects\\code\\Hw\\Hw.Dto\\Hw.Dto.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\VsProjects\\code\\Hw\\Hw.Dto\\Hw.Dto.csproj",
+        "projectName": "Hw.Dto",
+        "projectPath": "E:\\VsProjects\\code\\Hw\\Hw.Dto\\Hw.Dto.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\VsProjects\\code\\Hw\\Hw.Dto\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "E:\\VsProjects\\code\\Hw\\Hw.Model\\Hw.Model.csproj": {
+                "projectPath": "E:\\VsProjects\\code\\Hw\\Hw.Model\\Hw.Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\VsProjects\\code\\Hw\\Hw.Model\\Hw.Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\VsProjects\\code\\Hw\\Hw.Model\\Hw.Model.csproj",
+        "projectName": "Hw.Model",
+        "projectPath": "E:\\VsProjects\\code\\Hw\\Hw.Model\\Hw.Model.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\VsProjects\\code\\Hw\\Hw.Model\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "FreeSql": {
+              "target": "Package",
+              "version": "[2.5.200, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\VsProjects\\code\\Hw\\Hw.Service\\Hw.IServices\\Hw.IServices.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\VsProjects\\code\\Hw\\Hw.Service\\Hw.IServices\\Hw.IServices.csproj",
+        "projectName": "Hw.IServices",
+        "projectPath": "E:\\VsProjects\\code\\Hw\\Hw.Service\\Hw.IServices\\Hw.IServices.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\VsProjects\\code\\Hw\\Hw.Service\\Hw.IServices\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "E:\\VsProjects\\code\\Hw\\Hw.Dto\\Hw.Dto.csproj": {
+                "projectPath": "E:\\VsProjects\\code\\Hw\\Hw.Dto\\Hw.Dto.csproj"
+              },
+              "E:\\VsProjects\\code\\Hw\\Hw.Model\\Hw.Model.csproj": {
+                "projectPath": "E:\\VsProjects\\code\\Hw\\Hw.Model\\Hw.Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

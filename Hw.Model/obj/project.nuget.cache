@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "QlFYyC0wbj/2Ary65CzT7kgBXlUv73RtbM8NvMCj6rBSsY3mJDtrE5aQ7p3EQFNDx+dfQbAyNj9BLGIP7sTA+g==",
+  "success": true,
+  "projectFilePath": "E:\\VsProjects\\code\\Hw\\Hw.Model\\Hw.Model.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\freesql\\2.5.200\\freesql.2.5.200.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,15 @@
+E:\VsProjects\code\Hw\Hw.Dto\bin\Debug\net5.0\Hw.Dto.deps.json
+E:\VsProjects\code\Hw\Hw.Dto\bin\Debug\net5.0\Hw.Dto.dll
+E:\VsProjects\code\Hw\Hw.Dto\bin\Debug\net5.0\Hw.Dto.pdb
+E:\VsProjects\code\Hw\Hw.Dto\obj\Debug\net5.0\Hw.Dto.csproj.AssemblyReference.cache
+E:\VsProjects\code\Hw\Hw.Dto\obj\Debug\net5.0\Hw.Dto.GeneratedMSBuildEditorConfig.editorconfig
+E:\VsProjects\code\Hw\Hw.Dto\obj\Debug\net5.0\Hw.Dto.AssemblyInfoInputs.cache
+E:\VsProjects\code\Hw\Hw.Dto\obj\Debug\net5.0\Hw.Dto.AssemblyInfo.cs
+E:\VsProjects\code\Hw\Hw.Dto\obj\Debug\net5.0\Hw.Dto.csproj.CoreCompileInputs.cache
+E:\VsProjects\code\Hw\Hw.Dto\obj\Debug\net5.0\Hw.Dto.dll
+E:\VsProjects\code\Hw\Hw.Dto\obj\Debug\net5.0\ref\Hw.Dto.dll
+E:\VsProjects\code\Hw\Hw.Dto\obj\Debug\net5.0\Hw.Dto.pdb
+E:\VsProjects\code\Hw\Hw.Dto\obj\Debug\net5.0\refint\Hw.Dto.dll
+E:\VsProjects\code\Hw\Hw.Dto\bin\Debug\net5.0\Hw.Model.dll
+E:\VsProjects\code\Hw\Hw.Dto\bin\Debug\net5.0\Hw.Model.pdb
+E:\VsProjects\code\Hw\Hw.Dto\obj\Debug\net5.0\Hw.Dto.csproj.CopyComplete

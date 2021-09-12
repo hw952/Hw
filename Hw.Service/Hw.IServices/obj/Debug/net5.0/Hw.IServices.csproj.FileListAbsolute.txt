@@ -1,0 +1,17 @@
+E:\VsProjects\code\Hw\Hw.Service\Hw.IServices\bin\Debug\net5.0\Hw.IServices.deps.json
+E:\VsProjects\code\Hw\Hw.Service\Hw.IServices\bin\Debug\net5.0\Hw.IServices.dll
+E:\VsProjects\code\Hw\Hw.Service\Hw.IServices\bin\Debug\net5.0\Hw.IServices.pdb
+E:\VsProjects\code\Hw\Hw.Service\Hw.IServices\bin\Debug\net5.0\Hw.Dto.dll
+E:\VsProjects\code\Hw\Hw.Service\Hw.IServices\bin\Debug\net5.0\Hw.Dto.pdb
+E:\VsProjects\code\Hw\Hw.Service\Hw.IServices\obj\Debug\net5.0\Hw.IServices.csproj.AssemblyReference.cache
+E:\VsProjects\code\Hw\Hw.Service\Hw.IServices\obj\Debug\net5.0\Hw.IServices.GeneratedMSBuildEditorConfig.editorconfig
+E:\VsProjects\code\Hw\Hw.Service\Hw.IServices\obj\Debug\net5.0\Hw.IServices.AssemblyInfoInputs.cache
+E:\VsProjects\code\Hw\Hw.Service\Hw.IServices\obj\Debug\net5.0\Hw.IServices.AssemblyInfo.cs
+E:\VsProjects\code\Hw\Hw.Service\Hw.IServices\obj\Debug\net5.0\Hw.IServices.csproj.CoreCompileInputs.cache
+E:\VsProjects\code\Hw\Hw.Service\Hw.IServices\obj\Debug\net5.0\Hw.IServices.csproj.CopyComplete
+E:\VsProjects\code\Hw\Hw.Service\Hw.IServices\obj\Debug\net5.0\Hw.IServices.dll
+E:\VsProjects\code\Hw\Hw.Service\Hw.IServices\obj\Debug\net5.0\ref\Hw.IServices.dll
+E:\VsProjects\code\Hw\Hw.Service\Hw.IServices\obj\Debug\net5.0\Hw.IServices.pdb
+E:\VsProjects\code\Hw\Hw.Service\Hw.IServices\obj\Debug\net5.0\refint\Hw.IServices.dll
+E:\VsProjects\code\Hw\Hw.Service\Hw.IServices\bin\Debug\net5.0\Hw.Model.dll
+E:\VsProjects\code\Hw\Hw.Service\Hw.IServices\bin\Debug\net5.0\Hw.Model.pdb
